@@ -2,14 +2,42 @@ import 'package:flutter/material.dart';
 import 'components/TopStatusCards.dart';
 import 'package:covid/models/Dailycasesmodel.dart';
 import 'package:covid/services/http_service.dart';
+import '../mainDrawer.dart';
 
 class Home extends StatelessWidget {
   final HttpService service = HttpService();
 
   @override
   Widget build(BuildContext context) {
+    GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
+
     return SafeArea(
-          child: Scaffold(
+      child: Scaffold(
+          key: _scaffoldkey,
+          drawer: MainDrawer(),
+          floatingActionButton: Stack(
+            children: <Widget>[
+              Positioned(
+                  top: 18.0,
+                  left: 18.0,
+                  child: FloatingActionButton(
+                    backgroundColor: Colors.lightBlue[100],
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.zero,
+                      bottomRight: Radius.circular(25.0),
+                      topLeft: Radius.zero,
+                      topRight: Radius.circular(25.0),
+                    )),
+                    child: Icon(
+                      Icons.dehaze,
+                      color: Colors.black,
+                    ),
+                    onPressed: () => _scaffoldkey.currentState.openDrawer(),
+                  )),
+            ],
+          ),
+          // drawer: MainDrawer(),
           backgroundColor: Colors.lightBlue[50],
           body: FutureBuilder(
             future: service.getstateinfo(),
@@ -23,77 +51,86 @@ class Home extends StatelessWidget {
                   slivers: <Widget>[
                     SliverPersistentHeader(
                       delegate: MySliverAppbar(
-                        expandedheight: 270.0,
-                        active: a.active,
-                        confirmed: a.confirmed,
-                        deaths: a.deaths,
-                        recovered: a.recovered
-                        ),
+                          expandedheight: 270.0,
+                          active: a.active,
+                          confirmed: a.confirmed,
+                          deaths: a.deaths,
+                          recovered: a.recovered),
                       // pinned: true,
                       // floating: true,
                     ),
                     SliverList(
                         delegate:
-                            SliverChildListDelegate([SizedBox(height: 250.0)])),
+                            SliverChildListDelegate([SizedBox(height: 200.0)])),
                     SliverList(
                         delegate: SliverChildListDelegate([
                       Container(
                         child: DataTable(
-                          columnSpacing: 25.0,
-                          // headingRowHeight: ,
-                          columns: [
-                            DataColumn(
-                                label: Text(
-                              'STATE/UT',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                  fontSize: 14.0),
-                            )),
-                            DataColumn(
-                              label: Text(
-                                'C',
+                            columnSpacing: 25.0,
+                            columns: [
+                              DataColumn(
+                                  label: Text(
+                                'STATE/UT',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
                                     fontSize: 14.0),
+                              )),
+                              DataColumn(
+                                label: Text(
+                                  'C',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.brown,
+                                      fontSize: 14.0),
+                                ),
                               ),
-                            ),
-                            DataColumn(
-                                label: Text(
-                              'A',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                  fontSize: 14.0),
-                            )),
-                            DataColumn(
-                                label: Text(
-                              'R',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                  fontSize: 14.0),
-                            )),
-                            DataColumn(
-                                label: Text(
-                              'D',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                  fontSize: 14.0),
-                            )),
-                          ],
-                          rows: data.map(
-                            (e) => DataRow(cells: [
-                                    DataCell(Text(e.state)),
-                                    DataCell(Text(e.confirmed)),
-                                    DataCell(Text(e.active)),
-                                    DataCell(Text(e.recovered)),
-                                    DataCell(Text(e.deaths))
-                                  ])
-                          ).toList()
-                        ),
+                              DataColumn(
+                                  label: Text(
+                                'A',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue,
+                                    fontSize: 14.0),
+                              )),
+                              DataColumn(
+                                  label: Text(
+                                'R',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.green,
+                                    fontSize: 14.0),
+                              )),
+                              DataColumn(
+                                  label: Text(
+                                'D',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.orange,
+                                    fontSize: 14.0),
+                              )),
+                            ],
+                            rows: data
+                                .map((e) => DataRow(cells: [
+                                      DataCell(Text(e.state)),
+                                      DataCell(Container(
+                                        color: Colors.white.withOpacity(0.5),
+                                          padding: EdgeInsets.all(5.0),
+                                          child: Text(e.confirmed))),
+                                      DataCell(Container(
+                                        color: Colors.white.withOpacity(0.5),
+                                          padding: EdgeInsets.all(5.0),
+                                          child: Text(e.active))),
+                                      DataCell(Container(
+                                        color: Colors.white.withOpacity(0.5),
+                                          padding: EdgeInsets.all(5.0),
+                                          child: Text(e.recovered))),
+                                      DataCell(Container(
+                                        color: Colors.white.withOpacity(0.5),
+                                          padding: EdgeInsets.all(5.0),
+                                          child: Text(e.deaths))),
+                                    ]))
+                                .toList()),
                       )
                     ]))
                   ],
@@ -107,14 +144,18 @@ class Home extends StatelessWidget {
   }
 }
 
-
 class MySliverAppbar extends SliverPersistentHeaderDelegate {
   final double expandedheight;
   final String confirmed;
   final String active;
   final String recovered;
   final String deaths;
-  MySliverAppbar({this.expandedheight,this.active,this.confirmed,this.deaths,this.recovered});
+  MySliverAppbar(
+      {this.expandedheight,
+      this.active,
+      this.confirmed,
+      this.deaths,
+      this.recovered});
 
   @override
   Widget build(
@@ -123,11 +164,11 @@ class MySliverAppbar extends SliverPersistentHeaderDelegate {
       Image.asset('assets/covid19.jpg', fit: BoxFit.cover),
       Positioned(
           top: expandedheight / 18 - shrinkOffset,
-          left: 10.0,
+          right: 10.0,
           child: Opacity(
             opacity: 0.8,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Container(
@@ -157,7 +198,7 @@ class MySliverAppbar extends SliverPersistentHeaderDelegate {
             ),
           )),
       Positioned(
-        top: expandedheight / 1.5 - shrinkOffset,
+        top: expandedheight / 1.8 - shrinkOffset,
         left: 35.0,
         child: Container(
           child: Column(
@@ -166,17 +207,33 @@ class MySliverAppbar extends SliverPersistentHeaderDelegate {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  TopStatus(data: confirmed, color: Colors.pink, dataname: "Confirmed",),
+                  TopStatus(
+                    data: confirmed,
+                    color: Colors.pink,
+                    dataname: "Confirmed",
+                  ),
                   Padding(padding: EdgeInsets.all(5.0)),
-                  TopStatus(data: active,  color: Colors.blue, dataname: "Active",),
+                  TopStatus(
+                    data: active,
+                    color: Colors.blue,
+                    dataname: "Active",
+                  ),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  TopStatus(data: recovered, color: Colors.green, dataname: "Recovered",),
+                  TopStatus(
+                    data: recovered,
+                    color: Colors.green,
+                    dataname: "Recovered",
+                  ),
                   Padding(padding: EdgeInsets.all(5.0)),
-                  TopStatus(data: deaths, color: Colors.red, dataname: "Deceased",),
+                  TopStatus(
+                    data: deaths,
+                    color: Colors.red,
+                    dataname: "Deceased",
+                  ),
                 ],
               ),
             ],

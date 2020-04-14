@@ -1,9 +1,13 @@
+import 'package:covid/screens/News/myth_screen.dart';
+import 'package:covid/screens/Shopping/products_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:covid/screens/Home2/home2.dart';
-import 'package:covid/screens/FAQ/faq.dart';
-import 'package:covid/screens/Health/health.dart';
+import 'package:covid/screens/Health/helpline_screen.dart';
+import 'package:covid/screens/FAQ/faq_screen.dart';
+import 'package:covid/screens/test centres/test_centers.dart';
 import 'package:covid/screens/News/News.dart';
 import 'package:flutter/services.dart';
+import 'package:covid/screens/Donation/relieffund.dart';
 
 void main(){
   runApp(MyApp());
@@ -18,9 +22,10 @@ class _MyAppState extends State<MyApp> {
   int _currindex = 0;
   List<Widget> _screens = [
     Home(),
-    Health(),
+    FaqScreen(),
     News(),
-    Faq()
+    ProductsScreen(),
+    ReliefFund(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -38,6 +43,11 @@ class _MyAppState extends State<MyApp> {
       title: 'COVID',
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
+      routes: {
+        '/testcentres': (context) => TestCenters(),
+        '/myths': (context) => MythScreen(),
+        '/helpline':(context) => HelplineScreen()
+      },
       home: Scaffold(
         body: _screens[_currindex],
         bottomNavigationBar: Container(
@@ -73,10 +83,15 @@ class _MyAppState extends State<MyApp> {
                 title: Text('',style: TextStyle(fontSize: 0.0))
               ),
               BottomNavigationBarItem(
-                activeIcon: Icon(Icons.question_answer),
-                icon: Icon(Icons.question_answer,color: Colors.black,),
+                activeIcon: Icon(Icons.shopping_cart),
+                icon: Icon(Icons.shopping_cart,color: Colors.black,),
                 title: Text('',style: TextStyle(fontSize: 0.0))
                 ),
+              BottomNavigationBarItem(
+                activeIcon: Icon(Icons.monetization_on),
+                icon: Icon(Icons.monetization_on,color: Colors.black,),
+                title: Text('',style: TextStyle(fontSize: 0.0))
+              )
             ]
           ),
         ),
