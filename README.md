@@ -1,4 +1,4 @@
-# covid
+# COVID COMPANION APP
 
 A new Flutter project.
 
