@@ -11,9 +11,9 @@ class TopStatus extends StatelessWidget {
       height: 150.0,
       child: Card(
         elevation: 10.0,
-        // shape: RoundedRectangleBorder(
-        //   borderRadius: BorderRadius.circular(18.0)
-        // ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.0)
+        ),
         child: Center(
           child: Stack(
             children: <Widget>[
@@ -28,18 +28,20 @@ class TopStatus extends StatelessWidget {
                 top: 20,
                 left: 20,
                 child: Text(dataname,
-            style: TextStyle(
-              color: Colors.blueGrey[300],
-              fontSize: 14.0,
-              fontWeight: FontWeight.w700
-            ),
-            ),
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    color: Colors.blueGrey[300],
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w700
+                  ),
+                ),
              ),
               Positioned(
                 top:50,
                 left: 20,
                 child: Text(data,
             style: TextStyle(
+              fontFamily: 'Roboto',
               color: this.color,
               fontSize: 32.0,
               fontWeight: FontWeight.w700

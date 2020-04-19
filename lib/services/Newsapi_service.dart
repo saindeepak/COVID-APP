@@ -5,7 +5,7 @@ import 'package:covid/models/Newsmodel.dart';
 
 
 class NewsService {
-  var url = "https://newsapi.org/v2/everything?q=corona";
+  var url = "https://newsapi.org/v2/top-headlines?country=in&category=health";
 
   Future<List<NewsModelArticles>> getnews() async {
     Response res = await get(

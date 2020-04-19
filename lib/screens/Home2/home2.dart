@@ -37,7 +37,6 @@ class Home extends StatelessWidget {
                   )),
             ],
           ),
-          // drawer: MainDrawer(),
           backgroundColor: Colors.lightBlue[50],
           body: FutureBuilder(
             future: service.getstateinfo(),
@@ -80,6 +79,7 @@ class Home extends StatelessWidget {
                                 label: Text(
                                   'C',
                                   style: TextStyle(
+                                      fontFamily: 'Roboto',
                                       fontWeight: FontWeight.bold,
                                       color: Colors.brown,
                                       fontSize: 14.0),
@@ -89,6 +89,7 @@ class Home extends StatelessWidget {
                                   label: Text(
                                 'A',
                                 style: TextStyle(
+                                    fontFamily: 'Roboto',
                                     fontWeight: FontWeight.bold,
                                     color: Colors.blue,
                                     fontSize: 14.0),
@@ -97,6 +98,7 @@ class Home extends StatelessWidget {
                                   label: Text(
                                 'R',
                                 style: TextStyle(
+                                    fontFamily: 'Roboto',
                                     fontWeight: FontWeight.bold,
                                     color: Colors.green,
                                     fontSize: 14.0),
@@ -105,30 +107,64 @@ class Home extends StatelessWidget {
                                   label: Text(
                                 'D',
                                 style: TextStyle(
+                                    fontFamily: 'Roboto',
                                     fontWeight: FontWeight.bold,
                                     color: Colors.orange,
                                     fontSize: 14.0),
                               )),
                             ],
                             rows: data
-                                .map((e) => DataRow(cells: [
+                                .map((e) => DataRow(
+                                  cells: [
                                       DataCell(Text(e.state)),
                                       DataCell(Container(
-                                        color: Colors.white.withOpacity(0.5),
                                           padding: EdgeInsets.all(5.0),
-                                          child: Text(e.confirmed))),
+                                          decoration: BoxDecoration(
+                                            color: Colors.white.withOpacity(0.6),
+                                            borderRadius: BorderRadius.circular(12.0)
+                                          ),
+                                          child: Text(
+                                            e.confirmed,
+                                            style: TextStyle(
+                                              fontFamily: 'Roboto',
+                                            ),
+                                            ))),
                                       DataCell(Container(
-                                        color: Colors.white.withOpacity(0.5),
                                           padding: EdgeInsets.all(5.0),
-                                          child: Text(e.active))),
+                                           decoration: BoxDecoration(
+                                             color: Colors.white.withOpacity(0.5),
+                                            borderRadius: BorderRadius.circular(12.0)
+                                          ),
+                                          child: Text(
+                                            e.active,
+                                            style: TextStyle(
+                                              fontFamily: 'Roboto',
+                                            ),
+                                            ))),
                                       DataCell(Container(
-                                        color: Colors.white.withOpacity(0.5),
                                           padding: EdgeInsets.all(5.0),
-                                          child: Text(e.recovered))),
+                                           decoration: BoxDecoration(
+                                             color: Colors.white.withOpacity(0.5),
+                                            borderRadius: BorderRadius.circular(12.0)
+                                          ),
+                                          child: Text(
+                                            e.recovered,
+                                            style: TextStyle(
+                                              fontFamily: 'Roboto',
+                                            ),
+                                            ))),
                                       DataCell(Container(
-                                        color: Colors.white.withOpacity(0.5),
                                           padding: EdgeInsets.all(5.0),
-                                          child: Text(e.deaths))),
+                                           decoration: BoxDecoration(
+                                             color: Colors.white.withOpacity(0.5),
+                                            borderRadius: BorderRadius.circular(12.0)
+                                          ),
+                                          child: Text(
+                                            e.deaths,
+                                            style: TextStyle(
+                                              fontFamily: 'Roboto',
+                                            ),
+                                            ))),
                                     ]))
                                 .toList()),
                       )
@@ -172,9 +208,8 @@ class MySliverAppbar extends SliverPersistentHeaderDelegate {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Container(
-                  // color: Colors.blue[500].withOpacity(shrinkOffset / 500),
                   child: Text(
-                    'India Covid-19 Tracker',
+                    'Covid-19 Tracker',
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,

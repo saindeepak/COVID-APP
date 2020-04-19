@@ -3,13 +3,15 @@ import '../mainDrawer.dart';
 
 class HelplineScreen extends StatelessWidget {
   static const routeName = '/helpline';
-
+  
   Widget bodyData() => DataTable(
+        dataRowHeight: 55.0,
         columns: <DataColumn>[
           DataColumn(
             label: Text(
               'STATE/UT',
               style: TextStyle(
+                fontFamily: 'Roboto',
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
@@ -20,6 +22,7 @@ class HelplineScreen extends StatelessWidget {
             label: Text(
               'HelpLine Number',
               style: TextStyle(
+                fontFamily: 'Roboto',
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
@@ -36,7 +39,9 @@ class HelplineScreen extends StatelessWidget {
                       child: Text(
                         element.name,
                         style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w400),
+                          fontFamily: 'Roboto',
+                          fontSize: 14, 
+                          fontWeight: FontWeight.w400),
                       ),
                     ),
                   ),
@@ -47,7 +52,10 @@ class HelplineScreen extends StatelessWidget {
                       child: Text(
                         element.number,
                         style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w400),
+                          fontFamily: 'Roboto',
+                          fontSize: 14, 
+                          fontWeight: FontWeight.w400
+                        ),
                       ),
                     ),
                   ),
@@ -59,44 +67,73 @@ class HelplineScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Helpline Numbers"),
-      ),
-      drawer: Drawer(
-        child: MainDrawer(),
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          width: double.infinity,
-          child: Column(
-            children: <Widget>[
-              Text(
-                'Central Helpline Number for corona-virus: +91-11-23978046',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+    return WillPopScope(
+      onWillPop: (){
+        Navigator.of(context).pushReplacementNamed('/home');
+        return null;
+      },
+      child: SafeArea(
+        child: Scaffold(
+          appBar:  AppBar(
+            centerTitle: true,
+            title: Text(
+              "HelpLine Numbers",
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Roboto',
+              ),
+            ),
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.blue[100],
+                    Colors.blue[200],
+                    Colors.blue[300],
+                    Colors.blue[400]
+                  ],
                 ),
-                textAlign: TextAlign.center,
               ),
-              SizedBox(
-                height: 12,
+            ),
+          ),
+          drawer: Drawer(
+            child: MainDrawer(),
+          ),
+          body: SingleChildScrollView(
+            child: Container(
+              width: double.infinity,
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'Central Helpline Number for corona-virus: +91-11-23978046',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    'Helpline Numbers of States/UTs',
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  SingleChildScrollView(
+                    child: bodyData(),
+                  ),
+                ],
               ),
-              Text(
-                'Helpline Numbers of States/UTs',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              SingleChildScrollView(
-                child: bodyData(),
-              ),
-            ],
+            ),
           ),
         ),
       ),

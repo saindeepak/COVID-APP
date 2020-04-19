@@ -6,12 +6,16 @@ class ProductItem extends StatelessWidget {
   final String title;
   final String imageUrl;
   final String url;
-
+  final String rating;
+  final String available;
+  
   ProductItem({
     @required this.id,
     @required this.title,
     @required this.imageUrl,
     @required this.url,
+    @required this.rating,
+    @required this.available,
   });
 
   _launchInBrowser() async {
@@ -47,12 +51,12 @@ class ProductItem extends StatelessWidget {
                     topLeft: Radius.circular(18),
                     topRight: Radius.circular(18),
                   ),
-                  child: Image.network(
+                  child: Image.asset(
                     imageUrl,
                     height: 250,
                     width: double.infinity,
                     fit: BoxFit.cover,
-                  ),
+                  )
                 ),
                 Positioned(
                   bottom: 0,
@@ -60,6 +64,7 @@ class ProductItem extends StatelessWidget {
                   child: Container(
                     width: 350.0,
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
                       gradient: LinearGradient(
                         colors: [
                           Colors.black,
@@ -77,6 +82,7 @@ class ProductItem extends StatelessWidget {
                     child: Text(
                       title,
                       style: TextStyle(
+                        fontFamily: 'Roboto',
                         fontSize: 20,
                         color: Colors.lightBlue[100],
                       ),
@@ -87,6 +93,47 @@ class ProductItem extends StatelessWidget {
                 ),
               ],
             ),
+            Container(
+              color: Colors.grey.withOpacity(0.4),
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  // We will have multiple widgets side by side
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Row(
+                      // each widget will have further widgets in it side by side.
+                      children: <Widget>[
+                        Icon(Icons.star),
+                        SizedBox(
+                          width: 6,
+                        ),
+                        Text(
+                          rating,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.archive),
+                        SizedBox(
+                          width: 6,
+                        ),
+                        Text(
+                          available,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),

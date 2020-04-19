@@ -28,7 +28,12 @@ class StatesInfo extends StatelessWidget {
                     itemBuilder: (context,idx){
                       var val = data[idx];
                       return ListTile(
-                        title: Text('${val.state}'),
+                        title: Text(
+                          '${val.state}',
+                          style: TextStyle(
+                            fontFamily: 'Roboto',
+                          ),
+                          ),
                         // subtitle: val.districtDatar,
                       );
                     },

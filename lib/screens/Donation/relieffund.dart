@@ -1,108 +1,347 @@
-import 'package:flutter/material.dart';
-import 'package:fab_circular_menu/fab_circular_menu.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../mainDrawer.dart';
+import 'payment_item.dart';
+import 'package:flutter/material.dart';
+import 'payment.dart';
 
-class Url {
-  String url;
-  Url({this.url});
+class ReliefFund extends StatefulWidget {
+  @override
+  _ReliefFundState createState() => _ReliefFundState();
 }
 
-var urlList = [
-  'https://www.practo.com/health-checkup-packages/covid-19-sars-cov-2-detection/p',
-  'https://pmnrf.gov.in/en/online-donation',
-];
+class _ReliefFundState extends State<ReliefFund> {
+  // static const routeName = '/products';
 
-class ReliefFund extends StatelessWidget {
-  _launchInBrowser({@required url}) async {
-        if (await canLaunch(url)) {
-          await launch(
-            url,
-            forceSafariVC: false,
-            forceWebView: false,
-            headers: <String, String>{'header_key': 'header_value'},
-          );
-        } else {
-          throw 'Could not launch $url';
-        }
-      }
-
-  final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
+  List<Payment> displayedProducts_1 = [
+    Payment(
+      id: 'p1',
+      title: 'PayTm',
+      imageUrl: 'assets/paytm.png',
+      url: 'https://paytm.com/helpinghand/pm-cares-fund',
+    ),
+    Payment(
+      id: 'p2',
+      title: 'Google Pay',
+      imageUrl:
+          'assets/gpay.jpg',
+      url: 'https://gpay.app.goo.gl/JNmwJB',
+    ),
+    Payment(
+      id: 'p3',
+      title: 'Axis Bank',
+      imageUrl:
+          'assets/axisbank.png',
+      url: 'https://www.axisbank.com/coronavirus-pm-cares-fund-donation',
+    ),
+    Payment(
+      id: 'p4',
+      title: 'PMNRF',
+      imageUrl:
+          'assets/pmnrf.webp',
+      url: 'https://pmnrf.gov.in/en/online-donation',
+    ),
+  ];
+  List<Payment> displayedProducts_2 = [
+    Payment(
+      id: 'p1',
+      title: 'Meddo Health',
+      imageUrl:
+          "assets/meddohealth.png",
+      url: 'https://www.meddo.in/covid',
+    ),
+    Payment(
+      id: 'p2',
+      title: 'Practo',
+      imageUrl:
+          'assets/practo.png',
+      url:
+          'https://www.practo.com/health-checkup-packages/covid-19-sars-cov-2-detection/p?utm_source=referral&utm_campaign=coronavirus&utm_medium=social',
+    ),
+    Payment(
+      id: 'p3',
+      title: 'Path Labs',
+      imageUrl:
+          'assets/lalpathlabs.png',
+      url:
+          'https://www.lalpathlabs.com/book-a-test/Delhi?utm_source=internal&utm_medium=home_page_banner&utm_campaign=covid-19',
+    ),
+    Payment(
+      id: 'p4',
+      title: 'ThyroCare',
+      imageUrl:
+          'assets/thyrocare.jpg',
+      url: 'https://covid.thyrocare.com/covid-19.aspx',
+    ),
+  ];
+  List<Payment> displayedProducts_3 = [
+    Payment(
+      id: 'p1',
+      title: '',
+      imageUrl:
+          "assets/jio.jpg",
+      url:
+          'https://covid.bhaarat.ai/workflow/5e7912eaab25b3cac1451628',
+    ),
+    Payment(
+      id: 'p2',
+      title: '',
+      imageUrl:
+          'assets/apple.jpg',
+      url:
+          'https://www.apple.com/covid19/',
+    ),
+    Payment(
+      id: 'p3',
+      title: '',
+      imageUrl:
+          'assets/mountainhealthcare.jpg',
+      url:
+          'https://intermountainhealthcare.org/covid19-coronavirus/covid19-symptom-checker/',
+    ),
+    Payment(
+      id: 'p4',
+      title: '',
+      imageUrl:
+          'assets/cdc.jpg',
+      url: 'https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/index.html',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: MainDrawer(),
+      backgroundColor: Colors.blue[50],
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: Text('Donate'),
-      ),
-      body: Container(
-        padding: EdgeInsets.all(12.0),
-        child: Center(
-          child: Container(
-            height: 450.0,
-            width: double.infinity,
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18.0)
-              ),
-              color: Colors.lightBlue[50],
-              elevation: 15.0,
-              child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Text(
-                  'To combat the novel coronavirus pandemic, help the Prime Minister with your contribution. All contributions towards PMNRF are exempt from Income Tax under section 80(G) \n Press the button to make donation',
-                  style: GoogleFonts.roboto(
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold
-                  ),
-                  ),
-              ),
+        centerTitle: true,
+        title: Text(
+          "Utilities",
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            fontFamily: 'Roboto',
+          ),
+        ),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.blue[100],
+                Colors.blue[200],
+                Colors.blue[300],
+                Colors.blue[400]
+              ],
             ),
           ),
         ),
       ),
-      floatingActionButton: Builder(
-          builder: (context) => Stack(
-            children: <Widget>[
-              Positioned(
-                top: -115,
-                bottom: 70,
-                right: 25,
-                left: -27,
-                child: FabCircularMenu(
-                  key: fabKey,
-                  alignment: Alignment.bottomRight,
-                  ringColor: Colors.black.withOpacity(0.7),
-                  ringDiameter: 180.0,
-                  ringWidth: 60.0,
-                  fabSize: 75.0,
-                  fabElevation: 20.0,
-                  fabColor: Colors.white,
-                  fabCloseColor: Colors.white,                  
-                  fabOpenIcon: Icon(Icons.monetization_on, size: 50,),
-                  fabCloseIcon: Icon(Icons.close, color: Colors.black),
-                  fabMargin: const EdgeInsets.all(12.0),
-                  animationDuration: const Duration(milliseconds: 800),
-                  animationCurve: Curves.easeInOutCirc,
-                  children: <Widget>[
-                    IconButton(
-                        icon: Icon(Icons.settings,color: Colors.lightBlue[100],),
-                        onPressed:() => _launchInBrowser(url: urlList[0]),
-                        iconSize: 28,
-                        color: Colors.white),
-                    IconButton(
-                        icon: Icon(Icons.widgets,color: Colors.lightBlue[100]),
-                        onPressed: () =>_launchInBrowser(url: urlList[1]),
-                        iconSize: 28,
-                        color: Colors.white)
-                  ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: EdgeInsets.all(
+                10,
+              ),
+              child: Center(
+                child: Container(
+                  height: 200,
+                  width: 350,
+                  child: Card(
+                    elevation: 15,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Colors.blue[100],
+                            Colors.blue[200],
+                            Colors.blue[300],
+                            Colors.blue[400],
+                            Colors.blue[500],
+                          ],
+                        ),
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.all(
+                              20,
+                            ),
+                            child: Text(
+                              "Donate to PM Relief Fund",
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: displayedProducts_1
+                                  .map(
+                                    (i) => PaymentItem(
+                                      id: i.id,
+                                      imageUrl: i.imageUrl,
+                                      url: i.url,
+                                      title: i.title,
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ],
-          ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(
+                10,
+              ),
+              child: Center(
+                child: Container(
+                  height: 200,
+                  width: 350,
+                  child: Card(
+                    elevation: 15,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Colors.blue[100],
+                            Colors.blue[200],
+                            Colors.blue[300],
+                            Colors.blue[400],
+                            Colors.blue[500],
+                          ],
+                        ),
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.all(
+                              20,
+                            ),
+                            child: Text(
+                              "Book Your COVID-19 Test",
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: displayedProducts_2
+                                  .map((i) => PaymentItem(
+                                        id: i.id,
+                                        imageUrl: i.imageUrl,
+                                        url: i.url,
+                                        title: i.title,
+                                      ))
+                                  .toList(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(
+                10,
+              ),
+              child: Center(
+                child: Container(
+                  height: 200,
+                  width: 350,
+                  child: Card(
+                    elevation: 15,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Colors.blue[100],
+                            Colors.blue[200],
+                            Colors.blue[300],
+                            Colors.blue[400],
+                            Colors.blue[500],
+                          ],
+                        ),
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.all(
+                              20,
+                            ),
+                            child: Text(
+                              "Check for Symptoms",
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: displayedProducts_3
+                                  .map(
+                                    (i) => PaymentItem(
+                                      id: i.id,
+                                      imageUrl: i.imageUrl,
+                                      url: i.url,
+                                      title: i.title,
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
+      ),
     );
   }
 }

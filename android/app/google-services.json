@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "119837487950",
+    "firebase_url": "https://covid-77b6d.firebaseio.com",
+    "project_id": "covid-77b6d",
+    "storage_bucket": "covid-77b6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119837487950:android:cc5a47a95d3c0f3c66e41f",
+        "android_client_info": {
+          "package_name": "com.example.covid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119837487950-ci32fpjdal1s11s8gcgh8dig72ggsdck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzoiWF4kS_LLSRhmb9m4WtiCDbAkJYZys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119837487950-ci32fpjdal1s11s8gcgh8dig72ggsdck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

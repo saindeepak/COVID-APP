@@ -37,11 +37,14 @@ class News extends StatelessWidget {
                 return CustomScrollView(
                 slivers: <Widget>[
                   SliverAppBar(
-                    floating: true,
-                    expandedHeight: 70.0,
-                    backgroundColor: Colors.blueAccent.withOpacity(0.5),
+                    floating: false,
+                    expandedHeight: 175.0,
+                    backgroundColor: Colors.blue[500],
                     title: Text('News'),
-                    elevation: 15.0,
+                    flexibleSpace: FlexibleSpaceBar(
+                          centerTitle: true,
+                          background: Image.asset('assets/news.jpg',fit: BoxFit.cover,)
+                        ),
                   ),
                   SliverPadding(
                     padding: EdgeInsets.all(8.0),
@@ -49,8 +52,7 @@ class News extends StatelessWidget {
                       delegate: SliverChildBuilderDelegate(
                         (context,idx){
                           var val = data[idx];
-                          print(data[0].urlToImage);
-                          return Container(
+                          return  (val.source == 'Youtube.com')?Container(height: 0.0,):Container(
                           child: GestureDetector(
                             onTap: (){
                               _launchitem(val.url);
@@ -62,10 +64,10 @@ class News extends StatelessWidget {
                               child: SafeArea(
                                 child: Column(
                                   children: <Widget>[
-                                    // Text('${val.title}'),
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(18.0),
-                                      child: Image.network('${val.urlToImage}',fit: BoxFit.cover,),
+                                      child: (val.urlToImage == null)?null:Image.network('${val.urlToImage}',
+                                      fit: BoxFit.cover,),
                                     ),
                                     Container(
                                       padding: EdgeInsets.only(top:12.0,left: 12.0,right: 12.0),
@@ -82,7 +84,7 @@ class News extends StatelessWidget {
                                     ),
                                     Container(
                                       padding: EdgeInsets.all(15.0),
-                                      child: Text(
+                                      child: (val.content == null)?null: Text(
                                         '${val.content.split('[')[0]}',
                                         maxLines: 15,
                                         textAlign: TextAlign.justify,
@@ -94,7 +96,8 @@ class News extends StatelessWidget {
                                     ListTile(
                                       leading: Text('${val.source}'),
                                       trailing: Text("${val.publishedAt.split('T')[0]}",
-                                      style: TextStyle(color: Colors.black.withOpacity(0.8)),),
+                                      style: TextStyle(
+                                        color: Colors.black.withOpacity(0.8)),),
                                     )
                                   ],
                                 ),

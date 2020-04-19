@@ -1,32 +1,36 @@
-import 'package:covid/screens/News/myth_screen.dart';
-import 'package:covid/screens/Shopping/products_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:covid/screens/Home2/home2.dart';
-import 'package:covid/screens/Health/helpline_screen.dart';
+import 'package:covid/screens/AboutUs/aboutus.dart';
 import 'package:covid/screens/FAQ/faq_screen.dart';
+import 'package:covid/screens/Fun/games_screen.dart';
+import 'package:covid/screens/Health/precautions_screen.dart';
+import 'package:covid/screens/Landing%20screens/mainscreen.dart';
+import 'package:covid/screens/Landing%20screens/splash%20screens/splash_screen.dart';
+import 'package:covid/screens/News/myth_screen.dart';
+import 'package:covid/screens/login_signup/login.dart';
+import 'package:covid/screens/login_signup/signup.dart';
+import 'package:flutter/material.dart';
+import 'package:covid/screens/Health/helpline_screen.dart';
 import 'package:covid/screens/test centres/test_centers.dart';
-import 'package:covid/screens/News/News.dart';
 import 'package:flutter/services.dart';
-import 'package:covid/screens/Donation/relieffund.dart';
+import 'package:provider/provider.dart';
+import 'package:covid/StateManagementProviders/providerscreen.dart';
+import 'package:covid/screens/Landing screens/openingscreen.dart';
 
-void main(){
-  runApp(MyApp());
+Future<void> main() async{
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ManageScreen(),
+      child:MyApp(),
+    )
+  );
 }
 
-class MyApp extends StatefulWidget{
+class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
 
+
 class _MyAppState extends State<MyApp> {
-  int _currindex = 0;
-  List<Widget> _screens = [
-    Home(),
-    FaqScreen(),
-    News(),
-    ProductsScreen(),
-    ReliefFund(),
-  ];
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -38,64 +42,25 @@ class _MyAppState extends State<MyApp> {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-
+    
     return MaterialApp(
       title: 'COVID',
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
       routes: {
+        '/home': (context) => HomeScreen(),
+        '/faq' : (context) => FaqScreen(),
         '/testcentres': (context) => TestCenters(),
         '/myths': (context) => MythScreen(),
-        '/helpline':(context) => HelplineScreen()
+        '/helpline':(context) => HelplineScreen(),
+        '/login':(context) => LoginScreen(),
+        '/signup':(context) => SignupScreen(),
+        '/precautions': (context) => PrecautionsScreen(),
+        '/games': (context) => GamesScreen(),
+        '/open' : (context) => OpenScreen(),
+        '/about' : (context) => AboutUs(),
       },
-      home: Scaffold(
-        body: _screens[_currindex],
-        bottomNavigationBar: Container(
-          height: 45.0,
-          child: BottomNavigationBar(
-            selectedFontSize: 14.0,
-            unselectedFontSize: 14.0,
-            elevation: 4.0,
-            iconSize: 24.0,
-            backgroundColor: Colors.lightBlue[50],
-            selectedItemColor: Colors.green,
-            currentIndex: _currindex,
-            onTap: (int index){
-              setState((){
-                _currindex = index;
-              });
-            },
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(
-                activeIcon: Icon(Icons.show_chart),
-                icon: Icon(Icons.show_chart,color: Colors.black,),
-                title: Text('',style: TextStyle(fontSize: 0.0),)
-              ),
-              BottomNavigationBarItem(
-                activeIcon: Icon(Icons.face),
-                icon: Icon(Icons.face,color: Colors.black,),
-                title: Text('',style: TextStyle(fontSize: 0.0))
-              ),
-              BottomNavigationBarItem(
-                activeIcon: Icon(Icons.ac_unit),
-                icon: Icon(Icons.ac_unit,color: Colors.black,),
-                title: Text('',style: TextStyle(fontSize: 0.0))
-              ),
-              BottomNavigationBarItem(
-                activeIcon: Icon(Icons.shopping_cart),
-                icon: Icon(Icons.shopping_cart,color: Colors.black,),
-                title: Text('',style: TextStyle(fontSize: 0.0))
-                ),
-              BottomNavigationBarItem(
-                activeIcon: Icon(Icons.monetization_on),
-                icon: Icon(Icons.monetization_on,color: Colors.black,),
-                title: Text('',style: TextStyle(fontSize: 0.0))
-              )
-            ]
-          ),
-        ),
-      ),
     );
-  } 
+  }  
 }

@@ -4,13 +4,14 @@ import '../mainDrawer.dart';
 class TestCenters extends StatelessWidget {
   static const routeName = '/testcentres';
   Widget bodyData() => DataTable(
-    columnSpacing: 28.0,
-    dataRowHeight: 80.0,
+        columnSpacing: 28.0,
+        dataRowHeight: 70.0,
         columns: <DataColumn>[
           DataColumn(
             label: Text(
               'States',
               style: TextStyle(
+                fontFamily: 'Roboto',
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -21,6 +22,7 @@ class TestCenters extends StatelessWidget {
             label: Text(
               'Test Centres',
               style: TextStyle(
+                fontFamily: 'Roboto',
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -37,7 +39,9 @@ class TestCenters extends StatelessWidget {
                       child: Text(
                         element.name,
                         style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Roboto'),
                       ),
                     ),
                   ),
@@ -47,7 +51,10 @@ class TestCenters extends StatelessWidget {
                       child: Text(
                         element.centre,
                         style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w400),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Roboto',
+                        ),
                       ),
                     ),
                   ),
@@ -59,34 +66,63 @@ class TestCenters extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: MainDrawer(),
-      appBar: AppBar(
-        title: Text("Test Centres"),
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          width: double.infinity,
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: 12,
+    return WillPopScope(
+      onWillPop: (){
+        Navigator.of(context).pushReplacementNamed('/home');
+        return null;
+      },
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: Colors.blue[50],
+          drawer: MainDrawer(),
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text(
+              "Test Centres",
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Roboto',
               ),
-              Text(
-                'Test Centres in India',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+            ),
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.blue[100],
+                    Colors.blue[200],
+                    Colors.blue[300],
+                    Colors.blue[400]
+                  ],
                 ),
-                textAlign: TextAlign.center,
               ),
-              SizedBox(
-                height: 12,
+            ),
+          ),
+          body: SingleChildScrollView(
+            child: Container(
+              width: double.infinity,
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    'Test Centres in India',
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  SingleChildScrollView(
+                    child: bodyData(),
+                  ),
+                ],
               ),
-              SingleChildScrollView(
-                child: bodyData(),
-              ),
-            ],
+            ),
           ),
         ),
       ),
