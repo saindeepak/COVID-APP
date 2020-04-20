@@ -28,7 +28,7 @@
             android:value="2" />
         <meta-data
         android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyD8By_bbsuFhkbdqfat7eSho1mO5DHGkHU"/>
+        android:value="Your-Api-key"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
