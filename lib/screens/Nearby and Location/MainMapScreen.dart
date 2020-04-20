@@ -15,9 +15,6 @@ class _MapScreenState extends State<MapScreen> {
   String currAddress;
 
   Map<String,Marker> clients = {}; 
-
-  // https://medium.com/@rajesh.muthyala/flutter-with-google-maps-and-google-place-85ccee3f0371
-  
   
   final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
 
