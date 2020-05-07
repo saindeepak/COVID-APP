@@ -77,8 +77,6 @@ class AboutUs extends StatelessWidget {
                         ProfileDev('saindeepak799@gmail.com', 'Deepak Sain','assets/deepak.jpg'),
                         Divider(),
                         ProfileDev('priyamarora0302@gmail.com', 'Priyam Arora','assets/priyam.jpg'),
-                        Divider(),
-                        ProfileDev('shubhgoel90@gmail.com', 'Shubham Goel','assets/shubham.jpg'),
                       ],
                     )
                   ],
