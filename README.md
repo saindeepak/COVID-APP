@@ -18,6 +18,7 @@ youtube_link: https://www.youtube.com/watch?v=IXY5_BKdIng&t=3s
 
 
 Screeenshots:<br>
+<center>
 <img  src="ScreenShots/login.jpeg" width="200" style="margin:5% 10%;">&nbsp;
 <img  src="ScreenShots/Home.jpeg" width="200" style="margin:5% 10%;">&nbsp;
 <img  src="ScreenShots/hospi.jpeg" width="200" style="margin:5% 10%;">&nbsp;
@@ -27,3 +28,4 @@ Screeenshots:<br>
 <img  src="ScreenShots/utilities.jpeg" width="185" style="margin:5% 10%;">&nbsp;
 
 <img  src="ScreenShots/faq.jpeg" width="185" style="margin:5% 10%;">&nbsp;
+</center>
