@@ -18,14 +18,12 @@ youtube_link: https://www.youtube.com/watch?v=IXY5_BKdIng&t=3s
 
 
 Screeenshots:<br>
-<center>
-<img  src="ScreenShots/login.jpeg" width="200" style="margin:5% 10%;">&nbsp;
-<img  src="ScreenShots/Home.jpeg" width="200" style="margin:5% 10%;">&nbsp;
-<img  src="ScreenShots/hospi.jpeg" width="200" style="margin:5% 10%;">&nbsp;
-
-<img  src="ScreenShots/nearby_grocery.jpeg" width="185" style="margin:5% 10%;">&nbsp;]
-<img  src="ScreenShots/WhatsApp%20Image%202020-04-19%20at%209.12.59%20PM.jpeg" width="185" style="margin:5% 10%;">&nbsp;
-<img  src="ScreenShots/utilities.jpeg" width="185" style="margin:5% 10%;">&nbsp;
-
-<img  src="ScreenShots/faq.jpeg" width="185" style="margin:5% 10%;">&nbsp;
-</center>
+<div style="display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-evenly;flex-basis:20%;">
+<img  src="ScreenShots/login.jpeg" width="150">&nbsp;
+<img  src="ScreenShots/Home.jpeg" width="150">&nbsp;
+<img  src="ScreenShots/hospi.jpeg" width="150">&nbsp;
+<img  src="ScreenShots/nearby_grocery.jpeg" width="150">&nbsp;
+<img  src="ScreenShots/WhatsApp%20Image%202020-04-19%20at%209.12.59%20PM.jpeg" width="150">&nbsp;
+<img  src="ScreenShots/utilities.jpeg" width="150">&nbsp;
+<img  src="ScreenShots/faq.jpeg" width="150">&nbsp;
+</div>
