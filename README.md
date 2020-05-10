@@ -16,4 +16,5 @@ So, user can donate authentically without any fraud and using any medium for don
 
 youtube_link: https://www.youtube.com/watch?v=IXY5_BKdIng&t=3s
 
-![Home Screen](https://photos.google.com/photo/AF1QipMladm79_kXwEcpznSHNgK8lRGg6dkPMhycQMwP)
+Screeenshots:
+![Login-screen](https://drive.google.com/open?id=1rKRDJV-xGbygCblsJ8VmAwQgfpnPVXlS)
