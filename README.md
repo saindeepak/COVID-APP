@@ -16,11 +16,19 @@ So, user can donate authentically without any fraud and using any medium for don
 
 youtube_link: https://www.youtube.com/watch?v=IXY5_BKdIng&t=3s
 
-Screeenshots:
-<img align="left" src="ScreenShots/login.jpeg" width="185">&nbsp;
-<img align="right" src="ScreenShots/Home.jpeg" width="185">&nbsp;
-<img align="center" src="ScreenShots/hospi.jpeg" width="185">&nbsp;
-<img align="left" src="ScreenShots/nearby_grocery.jpeg" width="185">&nbsp;
-<img align="right" src="ScreenShots/WhatsApp%20Image%202020-04-19%20at%209.12.59%20PM.jpeg" width="185">&nbsp;
-<img align="center" src="ScreenShots/utilities.jpeg" width="185">&nbsp;
-<img align="left" src="ScreenShots/faq.jpeg" width="185">&nbsp;
+<style>
+img{
+ 20px;
+ }
+</style>
+
+Screeenshots:<br>
+<img align="left" src="ScreenShots/login.jpeg" width="200">&nbsp;
+<img align="center" src="ScreenShots/Home.jpeg" width="200">&nbsp;
+<img align="right" src="ScreenShots/hospi.jpeg" width="200">&nbsp;
+
+<img align="left" src="ScreenShots/nearby_grocery.jpeg" width="185">&nbsp;]
+<img align="center" src="ScreenShots/WhatsApp%20Image%202020-04-19%20at%209.12.59%20PM.jpeg" width="185">&nbsp;
+<img align="right" src="ScreenShots/utilities.jpeg" width="185">&nbsp;
+
+<img align="center" src="ScreenShots/faq.jpeg" width="185">&nbsp;
