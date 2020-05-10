@@ -14,7 +14,7 @@ So, user can donate authentically without any fraud and using any medium for don
 9. Live symptoms checker so you can know about your health and can take necessary steps according to it.
  10. Some people get bored and depressed during quarantine and have sometimes suicidal thoughts so a section which will have some of the best cheerful games which they can play with family and friends and get distracted and enjoy the quarantine period.
 
-youtube_link: https://www.youtube.com/watch?v=IXY5_BKdIng&t=3s
+Youtube: https://www.youtube.com/watch?v=IXY5_BKdIng&t=3s
 
 
 Screeenshots:<br>
