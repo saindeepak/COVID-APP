@@ -18,7 +18,7 @@ youtube_link: https://www.youtube.com/watch?v=IXY5_BKdIng&t=3s
 
 
 Screeenshots:<br>
-<div style="display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-evenly;flex-basis:20%;">
+<div style="display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-evenly;flex-basis:30%;">
 <img  src="ScreenShots/login.jpeg" width="150">&nbsp;
 <img  src="ScreenShots/Home.jpeg" width="150">&nbsp;
 <img  src="ScreenShots/hospi.jpeg" width="150">&nbsp;
