@@ -1,6 +1,6 @@
 # COVID COMPANION APP
 
-In the current scenario, there is a lot of confusion among people related COVID-19 such as fake news, symptoms, precaution measures, etc. And in the quarantine stage, people are locked in their house and they need medical and food essentials but they can't go outside and some time situation is worse, they feel depressed of being lockdown in the houses. So, taking an account of such a serious problem our team has made an Andriod App- COVID Companion, which is your all in one app in such a difficult time. The app has the following features:-
+In the current scenario, there is a lot of confusion among people related COVID-19 such as fake news, symptoms, precaution measures, etc. And in the quarantine stage, people are locked in their house and they need medical and food essentials but they can't go outside and some time situation is worse, they feel depressed of being lockdown in the houses. So, taking an account of such a serious problem i made an Andriod App- COVID Companion, which is your all in one app in such a difficult time. The app has the following features:-
 
 1. Live Stats of COVID-19 cases state-wise: Helps in better understanding the data
 2. Live News regarding COVID-19: It removes all the fake news and gives accurate and precise info.
